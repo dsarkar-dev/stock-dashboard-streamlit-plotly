@@ -24,10 +24,10 @@ df, numeric_cols, text_cols, unique_stocks = load_data()
 
 st.title("Stock Dashboard")
 
-check_box = st.sidebar.checkbox(label="Display dataset")
+check_box = st.sidebar.checkbox(label=" Donot display dataset")
 
 if not check_box:
-    st.write(df)
+    st.write(df)    
 
 st.sidebar.title("Settings")
 st.sidebar.subheader("Timeseries Setting")
@@ -36,12 +36,12 @@ feature_selection = st.sidebar.multiselect(label = "Features to Plot", options =
 stock_dropdown = st.sidebar.selectbox(label="Stock ticker", options = unique_stocks)
 
 
-print(feature_selection)
-df = df[df['Name'] == stock_dropdown]
-df_features =df[feature_selection]
+if feature_selection:
+    print(feature_selection)
+    df = df[df['Name'] == stock_dropdown]
+    df_features =df[feature_selection]
 
-plotly_figure = px.line(data_frame=df_features, x=df_features.index, y=feature_selection, title=(str(stock_dropdown) + ' ' +'Timeline'))
+    plotly_figure = px.line(data_frame=df_features, x=df_features.index, y=feature_selection, title=(str(stock_dropdown) + ' ' +'Timeline'))
 
 
-
-st.plotly_chart(plotly_figure)
+    st.plotly_chart(plotly_figure)
