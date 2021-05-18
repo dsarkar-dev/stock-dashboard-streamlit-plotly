@@ -6,7 +6,7 @@ import plotly.express as px
 @st.cache
 
 def load_data():
-    df = pd.read_csv("data/all_stocks_5yr.csv",index_col="date")
+    df = pd.read_csv("all_stocks_5yr.csv",index_col="date")
 
     numeric_df = df.select_dtypes(['float', 'int'])
     numeric_cols = numeric_df.columns
