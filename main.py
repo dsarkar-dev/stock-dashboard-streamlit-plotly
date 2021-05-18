@@ -26,7 +26,7 @@ st.title("Stock Dashboard")
 
 check_box = st.sidebar.checkbox(label="Display dataset")
 
-if check_box:
+if not check_box:
     st.write(df)
 
 st.sidebar.title("Settings")
